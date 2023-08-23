@@ -1,0 +1,40 @@
+// overwrite theme variables
+
+// test theme
+$primary: #3cfd9b;
+$secondary: #1d9b5c;
+$dark: #181818;
+$light: #d1d1d1;
+$success: #0fa;
+$info: #555;
+$warning: #ff0;
+$danger: #f00;
+
+.btn {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+}
+
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif, "Open Sans", "Quicksand", "sans-serif" ;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+
+// import bootstrap styles at the bottom!
+@import "~bootstrap/scss/bootstrap.scss";
