@@ -48,9 +48,9 @@ function App() {
   }, []); // El segundo argumento [] asegura que se ejecute solo una vez
 
   return (
-    <>
-      <Navbar className="bg-dark">
-        <Container>
+    < >
+      <Navbar className="bg-navbar">
+        <Container >
           <Navbar.Brand href="#home" className="text-light">
             <img
               alt=""
@@ -62,7 +62,7 @@ function App() {
           </Navbar.Brand>
         </Container>
       </Navbar>
-      <Container>
+      <Container className="">
         {isLoading ? ( // Muestra el indicador de carga si isLoading es verdadero
           <div className="loading-spinner"></div>
         ) : (

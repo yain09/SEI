@@ -10,19 +10,19 @@ export function Tarjeta(props) {
         <Card.Header className="card-header text-center bg1 border">
           <Row>
             <Col className="col align-self-center">
-              <p className="m-0">Fecha</p>
+              <p className="m-0 text-little">Fecha</p>
               <p className="h5" id="idFecha">
                 {fecha}
               </p>
             </Col>
             <Col className="col col align-self-center">
-              <p className="m-0">Clase N°</p>
+              <p className="m-0 text-little">Clase N°</p>
               <p className="h5" id="idClase">
                 {numClase}
               </p>
             </Col>
             <Col className="col col align-self-center">
-              <p className="m-0">U. Temática</p>
+              <p className="m-0 text-little">U. Temática</p>
               <p className="h5" id="idUnidad">
                 {uTematica}
               </p>
@@ -84,7 +84,7 @@ export function Tarjeta(props) {
           )}
         </Card.Body>
         <div className="card-footer">
-          <p className="text-black-50" id="idDocente">
+          <p className="text-black-50 m-0 " id="idDocente">
             {docente}
           </p>
         </div>

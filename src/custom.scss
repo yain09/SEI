@@ -1,12 +1,23 @@
 :root {
   --bs-primary-text-emphasis: rgb(255, 193, 7);
-  
+  --bs-border-width: 0px;
+  --bs-border-radius: .7rem;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #202023;
 }
 
 .accordion {
   --bs-accordion-active-bg: white;
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0;
-  }
+}
 
 .accordion-button {
   padding: 0;
@@ -19,7 +30,7 @@
 }
 
 .bg1 {
-  background: linear-gradient(5deg, #ac8507, #ffd413);
+  background: linear-gradient(-15deg, #f89b29 0%, #ff0f7b 100%);
   color: white !important;
 }
 
@@ -28,6 +39,9 @@
   color: white !important;
 }
 
+.bg-navbar {
+  background-color: #000000e1;
+}
 .border-1 {
   --bs-border-opacity: 1;
   border-color: rgba(
@@ -42,4 +56,13 @@
     var(--bs-success-rgb),
     var(--bs-border-opacity)
   ) !important;
+}
+.card{
+  --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.05);
+}
+.text-little{
+  font-size: 0.7rem;
+}
+.text-muted {
+  color: rgba(var(--bs-body-color-rgb), .3) !important;
 }
