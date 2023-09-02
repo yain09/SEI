@@ -2,57 +2,50 @@ import logo from "./img/largo.svg";
 import "./App.css";
 import { Navbar, Container, Row } from "react-bootstrap";
 import Tarjeta from "./script/components/Tarjeta";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [tarjetasProps, setTarjetasProps] = useState({
-    fecha: "",
-    numClase: "",
-    uTematica: "",
-    txtTeoria: "",
-    txtPractica: "",
-    txtTp: "",
-    docente: "",
+  const [tarjetasData, setTarjetasData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [tarjetaProps, setTarjetasProps] = useState({
+    fecha: "-",
+    numClase: "-",
+    uTematica: "-",
+    txtTeoria: "-",
+    txtPractica: "-",
+    txtTp: "-",
+    docente: "-",
   });
-
-const card = load()
-function load() {
-    let sheetId = "/1jCpaUtRcak3yeYa8YvzyLNg36UCxYrq9lX8AsDFRnTs";
-    let sheetTitle = "Cronograma";
-    let fullUrl =
-      "https://docs.google.com/spreadsheets/d" +
-      sheetId +
-      "/gviz/tq?sheet=" +
-      sheetTitle;
-    
+  useEffect(() => {
+    // Realiza la solicitud y procesa los datos una vez cuando se monta el componente
+    const sheetId = "1jCpaUtRcak3yeYa8YvzyLNg36UCxYrq9lX8AsDFRnTs";
+    const sheetTitle = "Cronograma";
+    const fullUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${sheetTitle}`;
 
     fetch(fullUrl)
       .then((res) => res.text())
       .then((rep) => {
-        var data = JSON.parse(rep.substr(47).slice(0, -2));
-        let length = data.table.rows.length;
-        let tabla = data.table.rows;
-        
-        for (let i = 0; i < length; i++) {
-          let fila = tabla[i].c;
-          setTarjetasProps({
-            fecha: fila[0].f,
-            numClase: fila[1].f,
-            uTematica: fila[2].f,
-            docente: fila[3].v,
-            ch: fila[4].f,
-            txtTeoria:  fila[5].v,
-            cht: fila[6].v,
-            txtPractica: fila[7].v,
-            chp: fila[8].f,
-            txtTp: fila[9].v,
-            chtp: fila[10].f
-          });
-          <Tarjeta {...tarjetasProps} />
-          }
+        const data = JSON.parse(rep.substr(47).slice(0, -2));
+        const tabla = data.table.rows;
+
+        const tarjetasDataArray = tabla.map((fila) => ({
+          fecha: fila.c[0].f,
+          numClase: fila.c[1].f,
+          uTematica: fila.c[2].f,
+          docente: fila.c[3].v,
+          ch: fila.c[4].f,
+          txtTeoria: fila.c[5].v,
+          cht: fila.c[6].v,
+          txtPractica: fila.c[7].v,
+          chp: fila.c[8].f,
+          txtTp: fila.c[9].v,
+          chtp: fila.c[10].f,
+        }));
+
+        setTarjetasData(tarjetasDataArray);
+        setIsLoading(false);
       });
-  }
-  ;
+  }, []); // El segundo argumento [] asegura que se ejecute solo una vez
 
   return (
     <>
@@ -65,15 +58,21 @@ function load() {
               height="50"
               className="d-inline-block align-center"
             />
-            
             <p className="pl-2 d-inline-block align-center"></p>
           </Navbar.Brand>
         </Container>
       </Navbar>
       <Container>
-        <Row xs={1} md={2} xl={3} className="mt-4">
-        {load()}
-        </Row>
+        {isLoading ? ( // Muestra el indicador de carga si isLoading es verdadero
+          <div className="loading-spinner"></div>
+        ) : (
+          <Row xs={1} md={2} xl={3} className="mt-4 py-2">
+            {tarjetasData.map((tarjetaProps, index) => (
+              <Tarjeta key={index} {...tarjetaProps}/>
+            ))}
+          </Row>
+        )}
+        {/* <Tarjeta {...tarjetaProps}/> */}
       </Container>
     </>
   );

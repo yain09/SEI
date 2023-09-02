@@ -2,10 +2,10 @@ import React from "react";
 import { Accordion, Card, Row, Col } from "react-bootstrap";
 
 export function Tarjeta(props) {
-  const { fecha, numClase, uTematica, txtTeoria, txtPractica, txtTp, docente } =
+  const { ch, cht, chtp, fecha, numClase, uTematica, txtTeoria, txtPractica, txtTp, docente } =
     props;
   return (
-    <Col>
+    <Col className="mb-4">
       <Card className="card h-100 shadow-sm">
         <Card.Header className="card-header text-center bg1 border">
           <Row>
@@ -30,7 +30,7 @@ export function Tarjeta(props) {
           </Row>
         </Card.Header>
         <Card.Body>
-        {txtTeoria ? (
+        {txtTeoria !== "-" ? (
             <Accordion flush className="m-0 p-0">
               <Accordion.Header className="px-0">
                 <p className="px-0 fs-3 d-inline-block align-center">
@@ -44,11 +44,11 @@ export function Tarjeta(props) {
           ) : (
             <Accordion.Header className="px-0">
               <p className="px-0 fs-3 d-inline-block align-center">
-                <span className="text-muted">Práctica</span>
+                <span className="text-muted">Teoría</span>
               </p>
             </Accordion.Header>
           )}
-          {txtPractica ? (
+          {txtPractica !== "-" ? (
             <Accordion flush className="m-0 p-0">
               <Accordion.Header className="px-0">
                 <p className="px-0 fs-3 d-inline-block align-center">
@@ -66,7 +66,7 @@ export function Tarjeta(props) {
               </p>
             </Accordion.Header>
           )}
-          {txtTp ? (
+          {txtTp !== "-" ? (
             <Accordion flush className="m-0 p-0">
               <Accordion.Header className="px-0">
                 <p className="px-0 fs-3 d-inline-block align-center">Tp</p>
