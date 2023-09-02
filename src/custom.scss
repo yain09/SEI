@@ -1,34 +1,45 @@
+:root {
+  --bs-primary-text-emphasis: rgb(255, 193, 7);
+  
+}
+
 .accordion {
   --bs-accordion-active-bg: white;
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0;
-}
+  }
 
 .accordion-button {
-  padding: 0
+  padding: 0;
 }
-.accordion-button:not(.collapsed){
-color: #ffc107;
+.accordion-button:not(.collapsed) {
+  color: rgb(255, 193, 7);
 }
-.accordion-body{
+.accordion-body {
   padding: 0;
 }
 
-.bg1{
-  background: linear-gradient(5deg, #ac8507,#ffd413) ;
+.bg1 {
+  background: linear-gradient(5deg, #ac8507, #ffd413);
   color: white !important;
 }
 
-.bg2{
-  background: linear-gradient(5deg,#047055) ;
+.bg2 {
+  background: linear-gradient(5deg, #047055);
   color: white !important;
 }
 
 .border-1 {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgba(
+    var(--bs-success-rgb),
+    var(--bs-border-opacity)
+  ) !important;
 }
 
 .border-2 {
---bs-border-opacity: 1;
-border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+  --bs-border-opacity: 1;
+  border-color: rgba(
+    var(--bs-success-rgb),
+    var(--bs-border-opacity)
+  ) !important;
 }

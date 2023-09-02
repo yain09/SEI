@@ -1,68 +1,95 @@
 import React from "react";
 import { Accordion, Card, Row, Col } from "react-bootstrap";
 
-export function Tarjeta() {
+export function Tarjeta(props) {
+  const { fecha, numClase, uTematica, txtTeoria, txtPractica, txtTp, docente } =
+    props;
   return (
-    <article className="col">
+    <Col>
       <Card className="card h-100 shadow-sm">
         <Card.Header className="card-header text-center bg1 border">
           <Row>
             <Col className="col align-self-center">
               <p className="m-0">Fecha</p>
               <p className="h5" id="idFecha">
-                12 ABR
+                {fecha}
               </p>
             </Col>
             <Col className="col col align-self-center">
               <p className="m-0">Clase N°</p>
               <p className="h5" id="idClase">
-                01
+                {numClase}
               </p>
             </Col>
             <Col className="col col align-self-center">
               <p className="m-0">U. Temática</p>
               <p className="h5" id="idUnidad">
-                1
+                {uTematica}
               </p>
             </Col>
           </Row>
         </Card.Header>
         <Card.Body>
-          <Accordion flush className="m-0 p-0">
-            <Accordion.Item>
+        {txtTeoria ? (
+            <Accordion flush className="m-0 p-0">
               <Accordion.Header className="px-0">
-                <p className="px-0 fs-5 d-inline-block align-center text-uppercase">Teoría </p>
+                <p className="px-0 fs-3 d-inline-block align-center">
+                  Teoría
+                </p>
               </Accordion.Header>
-              <Accordion.Body>
-                Presentación y condiciones generales del curso Introducción: El
-                problema estructural en arquitectura Estructuras resistentes
-                arquitectónicas. Definición. Finalidad de la estructura.
-                Exigencias estructurales específicas: la estabilidad, el
-                equilibrio, la resistencia y la rigidez. Sistemas Estructurales
-                Arquitectónicos. Proyecto estructural. Formas de los sistemas
-                estructurales Estructuras de acero. Estructuras de madera.
-                Estructuras de hormigón armado. Generación geométrica de formas
-                estructurales. Generalidades. Tipologías. Forma y proporciones
-                de los componentes estructurales. Medios de unión.
+              <Accordion.Body className="mb-3 text-right">
+                {txtTeoria}
               </Accordion.Body>
-            </Accordion.Item>
-            <Card.Title className="card-title mt-2">Práctica</Card.Title>
-            <div className="card-text" id="idPractica">
-              -
-            </div>
-            <h5 className="card-title mt-2">TP</h5>
-            <div className="card-text" id="idTp">
-              -
-            </div>
-          </Accordion>
+            </Accordion>
+          ) : (
+            <Accordion.Header className="px-0">
+              <p className="px-0 fs-3 d-inline-block align-center">
+                <span className="text-muted">Práctica</span>
+              </p>
+            </Accordion.Header>
+          )}
+          {txtPractica ? (
+            <Accordion flush className="m-0 p-0">
+              <Accordion.Header className="px-0">
+                <p className="px-0 fs-3 d-inline-block align-center">
+                  Práctica
+                </p>
+              </Accordion.Header>
+              <Accordion.Body className="mb-3 text-right">
+                {txtPractica}
+              </Accordion.Body>
+            </Accordion>
+          ) : (
+            <Accordion.Header className="px-0">
+              <p className="px-0 fs-3 d-inline-block align-center">
+                <span className="text-muted">Práctica</span>
+              </p>
+            </Accordion.Header>
+          )}
+          {txtTp ? (
+            <Accordion flush className="m-0 p-0">
+              <Accordion.Header className="px-0">
+                <p className="px-0 fs-3 d-inline-block align-center">Tp</p>
+              </Accordion.Header>
+              <Accordion.Body className="mb-3 text-right">
+                {txtTp}
+              </Accordion.Body>
+            </Accordion>
+          ) : (
+            <Accordion.Header className="px-0">
+              <p className="px-0 fs-3 d-inline-block align-center">
+                <span className="text-muted">Tp</span>
+              </p>
+            </Accordion.Header>
+          )}
         </Card.Body>
         <div className="card-footer">
           <p className="text-black-50" id="idDocente">
-            Cesar Bruschini
+            {docente}
           </p>
         </div>
       </Card>
-    </article>
+    </Col>
   );
 }
 
