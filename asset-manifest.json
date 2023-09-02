@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/SEI/static/css/main.d6233cc1.css",
+    "main.js": "/SEI/static/js/main.cb646aeb.js",
+    "static/media/largo.svg": "/SEI/static/media/largo.97467ec95e1872c14c48fde2e052a92b.svg",
+    "index.html": "/SEI/index.html",
+    "main.d6233cc1.css.map": "/SEI/static/css/main.d6233cc1.css.map",
+    "main.cb646aeb.js.map": "/SEI/static/js/main.cb646aeb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d6233cc1.css",
+    "static/js/main.cb646aeb.js"
+  ]
+}
