@@ -1,43 +1,337 @@
-let sheetId = '/1jCpaUtRcak3yeYa8YvzyLNg36UCxYrq9lX8AsDFRnTs';
-let sheetTitle = 'Cronograma';
+import React, { useState } from "react";
+import {
+  Card,
+  Row,
+  Col,
+  Modal,
+  Button,
+  ToggleButtonGroup,
+  ToggleButton,
+} from "react-bootstrap";
 
-let fullUrl = ('https://docs.google.com/spreadsheets/d' + sheetId + '/gviz/tq?sheet=' + sheetTitle);
+function TarjetaB(props) {
+  const {
+    ch,
+    cht,
+    chtp,
+    fecha,
+    numClase,
+    uTematica,
+    txtTeoria,
+    txtPractica,
+    txtTp,
+    docente,
+  } = props;
 
-class miClase {
-    constructor(fecha,clase,ut,teoria,practica,tp,docente){
-        this.fecha = fecha;
-        this.clase = clase;
-        this.ut = ut;
-        this.teoria = teoria;
-        this.practica = practica;
-        this.tp = tp;
-        this.docente = docente;
-        
+  const [showModal, setShowModal] = useState(false);
+  const [tarjetaEstado, setTarjetaEstado] = useState(1); // Estado inicial
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleEstadoChange = (estado) => {
+    setTarjetaEstado(estado);
+  };
+
+  const renderTarjetaContenido = () => {
+    // Cambia el contenido de la tarjeta según el estado
+    if (tarjetaEstado === 1) {
+      return (
+        <>
+          <Modal.Header className=" text-center bg1 border">
+            <Row className="w-100">
+              <Col className="align-self-center">
+                <p className="m-0 text-little">Fecha</p>
+                <p className="h5" id="idFecha">
+                  {fecha}
+                </p>
+              </Col>
+              <Col className="align-self-center">
+                <p className="m-0 text-little">Clase N°</p>
+                <p className="h5" id="idClase">
+                  {numClase}
+                </p>
+              </Col>
+              <Col className="align-self-center">
+                <p className="m-0 text-little">U. Temática</p>
+                <p className="h5" id="idUnidad">
+                  {uTematica}
+                </p>
+              </Col>
+            </Row>
+          </Modal.Header>
+          <Modal.Body className="pt-1 ">
+            <Row className="m-0 mt-2 w-100">
+              <Col
+                className="px-0 text-start d-inline-block text-little"
+                style={{ color: "rgb(150,150,150)" }}
+              >
+                Teoría
+              </Col>
+              <Col
+                xs={8}
+                className="text-end px-0 d-inline-block text-little"
+                style={{ color: "rgb(150,150,150)" }}
+              >
+                Docente acargo:
+                <span style={{ color: "rgb(50,50,50)" }}> {docente}</span>{" "}
+              </Col>{" "}
+              <Col
+                xs={2}
+                className="text-end px-0 d-inline-block text-little"
+                style={{ color: "rgb(150,150,150)" }}
+              >
+                <span style={{ color: "rgb(50,50,50)" }}>{cht}</span> hs
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              {txtTeoria !== "-" ? <p>{txtTeoria}</p> : ""}
+            </Row>
+          </Modal.Body>
+          <Modal.Footer>
+            <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
+              <ToggleButton
+                id="tbg-radio-1"
+                value={1}
+                onClick={() => handleEstadoChange(1)}
+              >
+                Teoría
+              </ToggleButton>
+              <ToggleButton
+                id="tbg-radio-2"
+                value={2}
+                onClick={() => handleEstadoChange(2)}
+              >
+                Práctica
+              </ToggleButton>
+              <ToggleButton
+                id="tbg-radio-3"
+                value={3}
+                onClick={() => handleEstadoChange(3)}
+              >
+                TP
+              </ToggleButton>
+            </ToggleButtonGroup>
+
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </>
+      );
+    } else if (tarjetaEstado === 2) {
+      return (
+        <>
+          <Modal.Header className=" text-center bg1 border">
+            <Row className="w-100">
+              <Col className="align-self-center">
+                <p className="m-0 text-little">Fecha</p>
+                <p className="h5" id="idFecha">
+                  {fecha}
+                </p>
+              </Col>
+              <Col className="align-self-center">
+                <p className="m-0 text-little">Clase N°</p>
+                <p className="h5" id="idClase">
+                  {numClase}
+                </p>
+              </Col>
+              <Col className="align-self-center">
+                <p className="m-0 text-little">U. Temática</p>
+                <p className="h5" id="idUnidad">
+                  {uTematica}
+                </p>
+              </Col>
+            </Row>
+          </Modal.Header>
+          <Modal.Body className="pt-1 ">
+            <Row className="m-0 mt-2 w-100">
+              <Col
+                className="px-0 text-start d-inline-block text-little"
+                style={{ color: "rgb(150,150,150)" }}
+              >
+                Práctica
+              </Col>
+              <Col
+                xs={1}
+                className="text-end px-0 d-inline-block text-little"
+                style={{ color: "rgb(150,150,150)" }}
+              >
+                <span style={{ color: "rgb(50,50,50)" }}>{cht}</span> hs
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              {txtPractica !== "-" ? <p>{txtPractica}</p> : ""}
+            </Row>
+          </Modal.Body>
+          <Modal.Footer>
+            <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
+              <ToggleButton
+                id="tbg-radio-1"
+                value={1}
+                onClick={() => handleEstadoChange(1)}
+              >
+                Teoría
+              </ToggleButton>
+              <ToggleButton
+                id="tbg-radio-2"
+                value={2}
+                onClick={() => handleEstadoChange(2)}
+              >
+                Práctica
+              </ToggleButton>
+              <ToggleButton
+                id="tbg-radio-3"
+                value={3}
+                onClick={() => handleEstadoChange(3)}
+              >
+                TP
+              </ToggleButton>
+            </ToggleButtonGroup>
+
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </>
+      );
+    } else if (tarjetaEstado === 3) {
+      return (
+        <>
+          <Modal.Header className=" text-center bg1 border">
+            <Row className="w-100">
+              <Col className="align-self-center">
+                <p className="m-0 text-little">Fecha</p>
+                <p className="h5" id="idFecha">
+                  {fecha}
+                </p>
+              </Col>
+              <Col className="align-self-center">
+                <p className="m-0 text-little">Clase N°</p>
+                <p className="h5" id="idClase">
+                  {numClase}
+                </p>
+              </Col>
+              <Col className="align-self-center">
+                <p className="m-0 text-little">U. Temática</p>
+                <p className="h5" id="idUnidad">
+                  {uTematica}
+                </p>
+              </Col>
+            </Row>
+          </Modal.Header>
+          <Modal.Body className="pt-1 ">
+            <Row className="m-0 mt-2 w-100">
+              <Col
+                className="px-0 text-start d-inline-block text-little"
+                style={{ color: "rgb(150,150,150)" }}
+              >
+                Trabajo Práctico
+              </Col>
+              
+              <Col
+                xs={1}
+                className="text-end px-0 d-inline-block text-little"
+                style={{ color: "rgb(150,150,150)" }}
+              >
+                <span style={{ color: "rgb(50,50,50)" }}>{cht}</span> hs
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              {txtTp !== "-" ? <p>{txtTp}</p> : ""}
+            </Row>
+          </Modal.Body>
+          <Modal.Footer>
+            <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
+              <ToggleButton
+                id="tbg-radio-1"
+                value={1}
+                onClick={() => handleEstadoChange(1)}
+              >
+                Teoría
+              </ToggleButton>
+              <ToggleButton
+                id="tbg-radio-2"
+                value={2}
+                onClick={() => handleEstadoChange(2)}
+              >
+                Práctica
+              </ToggleButton>
+              <ToggleButton
+                id="tbg-radio-3"
+                value={3}
+                onClick={() => handleEstadoChange(3)}
+              >
+                TP
+              </ToggleButton>
+            </ToggleButtonGroup>
+
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </>
+      );
     }
-    tarjeta(){
-        document.write(`<article class="col"> <div class="card h-100 shadow-sm"> <div class="card-header text-center bg1 border"> <div class="row"> <div class="col align-self-center"> <p class="m-0">Fecha</p> <p class="h5" id="idFecha">${this.fecha}</p> </div> <div class="col col align-self-center"> <p class="m-0">Clase N°</p> <p class="h5" id="idClase">${this.clase}</p> </div> <div class="col col align-self-center"> <p class="m-0">U. Temática</p> <p class="h5" id="idUnidad">${this.ut}</p> </div> </div> </div> <div class="card-body"> <h5 class="card-title">Teoría</h5> <div class="card-text" id="idTeoria">${this.teoria}</div> <h5 class="card-title mt-2">Práctica</h5> <div class="card-text" id="idPractica">${this.practica}</div> <h5 class="card-title mt-2">TP</h5> <div class="card-text" id="idTp">${this.tp}</div> </div> <div class="card-footer"> <p class="text-black-50" id="idDocente">${this.docente}</p> </div> </div> </article>`)
-    }
+  };
+
+  return (
+    <Col className="d-flex justify-content-center">
+      <Card
+        className="align-self-center card my-4 px-1 pb-0"
+        onClick={handleOpenModal}
+        style={{ cursor: "pointer" }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <p className="m-0 px-0 text-little">Fecha</p>
+          <p
+            className="h5"
+            id="idFecha"
+            style={{ color: "rgb(255, 255, 255)" }}
+          >
+            {fecha.toUpperCase()}
+          </p>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <p className="m-0 text-little">Clase N°</p>
+          <p
+            className="numero mb-0 pb-0"
+            id="idClase"
+            style={{ color: "rgb(255, 255, 255)" }}
+          >
+            {numClase}
+          </p>
+        </div>
+      </Card>
+
+      {/* Modal */}
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        dialogClassName="custom-modal"
+        centered
+      >
+        {renderTarjetaContenido()}
+      </Modal>
+    </Col>
+  );
 }
 
-fetch(fullUrl)
-    .then(res => res.text())
-    .then(rep => {
-        var data = JSON.parse(rep.substr(47).slice(0,-2));
-   
-        let idFecha = document.getElementById('idFecha');
-        let idClase = document.getElementById('idClase');
-        let idUnidad = document.getElementById('idUnidad');
-        let idTeoria = document.getElementById('idTeoria');
-        let idPractica = document.getElementById('idPractica');
-        let idTp = document.getElementById('idTp');
-        let idDocente = document.getElementById('idDocente');
-        let length = data.table.rows.length;
-        let tabla = (data.table.rows)
-            
-        }
- 
-            
-})
-
-const primera = new miClase("00 ABR","01","1","Estructuras reticuladas:Estructuras de acero. Estructuras de madera Estudio isostático. Solicitaciones y esfuerzos de los componentes estructurales sometidos a cargas estáticas verticales y oblicuas. Métodos gráficos y analíticos.","Ejercitación sobre teoría","Seguimiento TP2","Valeria Herrero");
-primera.tarjeta();
+export default TarjetaB;

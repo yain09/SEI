@@ -13,6 +13,7 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-responsive": "^9.0.2",
     "react-scripts": "5.0.1",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2",
@@ -20,7 +21,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d buid",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

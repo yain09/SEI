@@ -1,15 +1,18 @@
-import logo from "./img/largo.svg";
-import "./App.css";
-import { Navbar, Container, Row } from "react-bootstrap";
-import Tarjeta from "./script/components/Tarjeta";
 import { useState, useEffect } from "react";
+import "./App.css";
+import { Container, Row, Col } from "react-bootstrap";
+import Tarjeta from "./script/components/Tarjeta";
+import TarjetaA from "./script/components/tarjetaA";
+import TarjetaB from "./script/components/tarjetaB";
+import Cabecera from "./script/components/Cabecera";
+
 
 function App() {
   const [tarjetasData, setTarjetasData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [tarjetaProps, setTarjetasProps] = useState({
-    fecha: "-",
-    numClase: "-",
+    fecha: "12 ABR",
+    numClase: "1",
     uTematica: "-",
     txtTeoria: "-",
     txtPractica: "-",
@@ -49,30 +52,28 @@ function App() {
 
   return (
     < >
-      <Navbar className="bg-navbar">
-        <Container >
-          <Navbar.Brand href="#home" className="text-light">
-            <img
-              alt=""
-              src={logo}
-              height="50"
-              className="d-inline-block align-center"
-            />
-            <p className="pl-2 d-inline-block align-center"></p>
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
+      <Cabecera/>
       <Container className="">
         {isLoading ? ( // Muestra el indicador de carga si isLoading es verdadero
           <div className="loading-spinner"></div>
         ) : (
-          <Row xs={1} md={2} xl={3} className="mt-4 py-2">
+          <Row xs={2} sm={3} md={4} lg={5} xl={6} className="mt-4 py-2">
             {tarjetasData.map((tarjetaProps, index) => (
-              <Tarjeta key={index} {...tarjetaProps}/>
+              <TarjetaB key={index} {...tarjetaProps}/>
             ))}
           </Row>
         )}
-        {/* <Tarjeta {...tarjetaProps}/> */}
+        {/* <Row xs={2} sm={3} md={4} lg={5} xl={6} className="mt-2 d-flex">
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+          <TarjetaB {...tarjetaProps}/>
+        </Row> */}
       </Container>
     </>
   );
