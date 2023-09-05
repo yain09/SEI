@@ -14,7 +14,11 @@ function TarjetaA(props) {
   } = props;
   return (
     <Col className="d-flex justify-content-center">
-      <Card className="align-self-center card my-4 px-1 pb-0">
+      <Card
+        className="align-self-center card my-4 px-1 pb-0"
+        onClick={handleOpenModal}
+        style={{ cursor: "pointer" }}
+      >
         <div
           style={{
             display: "flex",

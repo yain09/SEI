@@ -10,18 +10,8 @@ import Cabecera from "./script/components/Cabecera";
 function App() {
   const [tarjetasData, setTarjetasData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [tarjetaProps, setTarjetasProps] = useState({
-    fecha: "12 ABR",
-    numClase: "1",
-    uTematica: "-",
-    txtTeoria: "-",
-    txtPractica: "-",
-    txtTp: "-",
-    docente: "-",
-  });
   useEffect(() => {
-    // Realiza la solicitud y procesa los datos una vez cuando se monta el componente
-    const sheetId = "1jCpaUtRcak3yeYa8YvzyLNg36UCxYrq9lX8AsDFRnTs";
+  const sheetId = "1jCpaUtRcak3yeYa8YvzyLNg36UCxYrq9lX8AsDFRnTs";
     const sheetTitle = "Cronograma";
     const fullUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${sheetTitle}`;
 
@@ -48,13 +38,13 @@ function App() {
         setTarjetasData(tarjetasDataArray);
         setIsLoading(false);
       });
-  }, []); // El segundo argumento [] asegura que se ejecute solo una vez
+  }, []);
 
   return (
     < >
       <Cabecera/>
       <Container className="">
-        {isLoading ? ( // Muestra el indicador de carga si isLoading es verdadero
+        {isLoading ? (
           <div className="loading-spinner"></div>
         ) : (
           <Row xs={2} sm={3} md={4} lg={5} xl={6} className="mt-4 py-2">
@@ -63,17 +53,7 @@ function App() {
             ))}
           </Row>
         )}
-        {/* <Row xs={2} sm={3} md={4} lg={5} xl={6} className="mt-2 d-flex">
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-          <TarjetaB {...tarjetaProps}/>
-        </Row> */}
+        
       </Container>
     </>
   );
