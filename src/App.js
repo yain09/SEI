@@ -49,7 +49,7 @@ function App() {
         ) : (
           <Row xs={2} sm={3} md={4} lg={5} xl={6} className="mt-4 py-2">
             {tarjetasData.map((tarjetaProps, index) => (
-              <TarjetaB key={index} {...tarjetaProps}/>
+              <Tarjeta key={index} {...tarjetaProps}/>
             ))}
           </Row>
         )}
