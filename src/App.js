@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Tarjeta from "./script/components/Tarjeta";
-import TarjetaA from "./script/components/tarjetaA";
-import TarjetaB from "./script/components/tarjetaB";
 import Cabecera from "./script/components/Cabecera";
 
 

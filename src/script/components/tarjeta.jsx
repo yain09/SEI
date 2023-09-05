@@ -11,7 +11,6 @@ import { useMediaQuery } from "react-responsive";
 
 function Tarjeta(props) {
   const {
-    ch,
     cht,
     chp,
     chtp,
@@ -230,7 +229,7 @@ function Tarjeta(props) {
                 id="tbg-radio-1"
                 value={1}
                 className="custom-button"
-                onClick={() => (handleEstadoChange(1), setSelectedButton(1))}
+                onClick={() => (handleEstadoChange(1) & setSelectedButton(1))}
               >
                 <span>Teoría </span>
                 {horas(cht)}
@@ -241,7 +240,7 @@ function Tarjeta(props) {
                 id="tbg-radio-2"
                 value={2}
                 className="custom-button"
-                onClick={() => (handleEstadoChange(2), setSelectedButton(2))}
+                onClick={() => (handleEstadoChange(2) & setSelectedButton(2))}
               >
                 <span>Práctica </span>
                 {horas(chp)}
@@ -252,7 +251,7 @@ function Tarjeta(props) {
                 id="tbg-radio-3"
                 value={3}
                 className="custom-button"
-                onClick={() => (handleEstadoChange(3), setSelectedButton(3))}
+                onClick={() => (handleEstadoChange(3) & setSelectedButton(3))}
               >
                 <span>TP </span>
                 {horas(chtp)}
