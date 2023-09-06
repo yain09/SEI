@@ -78,7 +78,7 @@ function Tarjeta(props) {
               className="text-end px-0 d-inline-block text-little"
               style={{ color: "rgb(150,150,150)" }}
             >
-              Docente acargo:
+              Docente a cargo:
               <span style={{ color: "rgb(50,50,50)" }}> {docente}</span>{" "}
             </Col>{" "}
             <Col

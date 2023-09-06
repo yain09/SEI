@@ -10,7 +10,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
   const sheetId = "1jCpaUtRcak3yeYa8YvzyLNg36UCxYrq9lX8AsDFRnTs";
-    const sheetTitle = "Cronograma";
+    const sheetTitle = "Crono1cuat";
     const fullUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${sheetTitle}`;
 
     fetch(fullUrl)
