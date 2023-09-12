@@ -62,6 +62,13 @@ function Tarjeta(props) {
     return h !== "0,00" ? <span className="text-little">{h} hs</span> : null;
   };
 
+  
+  const styleTeoria = txtTeoria.includes("EXAMEN")
+  ? { cursor: "pointer", background: "linear-gradient(325deg, rgb(249 0 68 / 66%) 0%, rgba(255, 15, 15, 0) 100%)" }
+  : txtTeoria.includes("PARO") || txtTeoria.includes("FERIADO")
+  ? { cursor: "pointer", opacity: 0.3 }
+  : { cursor: "pointer" };
+  
   const renderTarjetaContenido = () => {
     if (tarjetaEstado === 1) {
       return (
@@ -147,7 +154,7 @@ function Tarjeta(props) {
       <Card
         className="align-self-center card my-4 px-1 pb-0"
         onClick={handleOpenModal}
-        style={{ cursor: "pointer" }}
+        style={styleTeoria}
       >
         <div
           style={{
@@ -156,7 +163,12 @@ function Tarjeta(props) {
             alignItems: "center",
           }}
         >
-          <p className="m-0 px-0 text-little" style={{ color: "rgb(130,130,130)" }}>Fecha</p>
+          <p
+            className="m-0 px-0 text-little"
+            style={{ color: "rgb(130,130,130)" }}
+          >
+            Fecha
+          </p>
           <p
             className="h5"
             id="idFecha"
@@ -164,6 +176,11 @@ function Tarjeta(props) {
           >
             {fecha.toUpperCase()}
           </p>
+          <p
+            className="h5"
+            id="idFecha"
+            style={{ color: "rgb(255, 255, 255)" }}
+          ></p>
         </div>
         <div
           style={{
@@ -172,7 +189,9 @@ function Tarjeta(props) {
             alignItems: "center",
           }}
         >
-          <p className="m-0 text-little" style={{ color: "rgb(130,130,130)" }}>Clase N°</p>
+          <p className="m-0 text-little" style={{ color: "rgb(130,130,130)" }}>
+            Clase N°
+          </p>
           <p
             className="numero mb-0 pb-0"
             id="idClase"
@@ -216,7 +235,9 @@ function Tarjeta(props) {
             </Col>
           </Row>
         </Modal.Header>
-        <Modal.Body className="pt-1" style={{minHeight:"450px"}}>{renderTarjetaContenido()}</Modal.Body>
+        <Modal.Body className="pt-1" style={{ minHeight: "450px" }}>
+          {renderTarjetaContenido()}
+        </Modal.Body>
         <Modal.Footer className="p-0">
           <ToggleButtonGroup
             type="radio"
@@ -229,7 +250,7 @@ function Tarjeta(props) {
                 id="tbg-radio-1"
                 value={1}
                 className="custom-button"
-                onClick={() => (handleEstadoChange(1) & setSelectedButton(1))}
+                onClick={() => handleEstadoChange(1) & setSelectedButton(1)}
               >
                 <span>Teoría </span>
                 {horas(cht)}
@@ -240,7 +261,7 @@ function Tarjeta(props) {
                 id="tbg-radio-2"
                 value={2}
                 className="custom-button"
-                onClick={() => (handleEstadoChange(2) & setSelectedButton(2))}
+                onClick={() => handleEstadoChange(2) & setSelectedButton(2)}
               >
                 <span>Práctica </span>
                 {horas(chp)}
@@ -251,7 +272,7 @@ function Tarjeta(props) {
                 id="tbg-radio-3"
                 value={3}
                 className="custom-button"
-                onClick={() => (handleEstadoChange(3) & setSelectedButton(3))}
+                onClick={() => handleEstadoChange(3) & setSelectedButton(3)}
               >
                 <span>TP </span>
                 {horas(chtp)}
