@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Tarjeta from "./Tarjeta"
+import Tarjeta from "./Tarjeta";
 import { Row } from "react-bootstrap";
 
 function TablaCuatrimestre1() {
@@ -15,7 +15,6 @@ function TablaCuatrimestre1() {
       .then((rep) => {
         const data = JSON.parse(rep.substr(47).slice(0, -2));
         const tabla = data.table.rows;
-
         const tarjetasDataArray = tabla.map((fila) => ({
           fecha: fila.c[0].f,
           numClase: fila.c[1].f,

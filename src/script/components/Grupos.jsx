@@ -1,0 +1,3 @@
+function Cabecera() {
+  return <></>;
+}

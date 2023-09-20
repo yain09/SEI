@@ -1,23 +1,50 @@
 import "./App.css";
-import { Col, Container,Row} from "react-bootstrap";
+import { useState } from "react";
+import { Container } from "react-bootstrap";
 import TablaCuatrimestre1 from "./script/components/TablaCuatrimestre1";
 import TablaCuatrimestre2 from "./script/components/TablaCuatrimestre2";
 import Cabecera from "./script/components/Cabecera";
+import TablaGrupos from "./script/components/TablaGrupos";
+import Separador from "./script/components/Separador";
 
 function App() {
+  const [currentState, setCurrentState] = useState("cronograma");
+  function RenderContent() {
+    switch (currentState) {
+      case "cronograma": {
+        return (
+          <>
+            <TablaCuatrimestre1 />
+            <Separador />
+            <TablaCuatrimestre2 />
+          </>
+        );
+      }
+      case "docente 1": {
+        return (
+          <>
+            <TablaGrupos />
+          </>
+        );
+      }
+
+      case "docente 2": {
+        return <></>;
+      }
+
+      case "docente 3": {
+        return <></>;
+      }
+      default: {
+        setCurrentState("cronograma");
+      }
+    }
+  }
   return (
     <>
-      <Cabecera className="mb-3"/>
-      <Container className="">
-        <TablaCuatrimestre1 />
-        <Row className="p-2 receso-text">
-        
-          <Col></Col>
-          <Col><h1 className="text-white text-center m-0" style={{backgroundColor:"#202023", borderRadius:"2rem"}}>Receso</h1></Col>
-          <Col></Col>
-        
-        </Row>
-        <TablaCuatrimestre2 />
+      <Cabecera setCurrentState={setCurrentState} className="mb-3" />
+      <Container className="" id="Body">
+      {RenderContent()}
       </Container>
     </>
   );

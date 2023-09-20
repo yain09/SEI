@@ -62,13 +62,12 @@ function Tarjeta(props) {
     return h !== "0,00" ? <span className="text-little">{h} hs</span> : null;
   };
 
-  
   const styleTeoria = txtTeoria.includes("EXAMEN")
-  ? { cursor: "pointer", background: "linear-gradient(325deg, rgb(249 0 68 / 66%) 0%, rgba(255, 15, 15, 0) 100%)" }
-  : txtTeoria.includes("PARO") || txtTeoria.includes("FERIADO")
-  ? { cursor: "pointer", opacity: 0.3 }
-  : { cursor: "pointer" };
-  
+    ? { cursor: "pointer", background: "rgba(247, 57, 101, 50%) " }
+    : txtTeoria.includes("PARO") || txtTeoria.includes("FERIADO")
+    ? { cursor: "pointer", opacity: 0.3 }
+    : { cursor: "pointer" };
+
   const renderTarjetaContenido = () => {
     if (tarjetaEstado === 1) {
       return (

@@ -1,9 +1,9 @@
-:root {
-  --bs-primary-text-emphasis: rgb(255, 193, 7);
-  --bs-border-width: 0px;
-  --bs-border-radius: 0.7rem;
-  --bs-primary: #e8e8e8;
-}
+// :root {
+//   --bs-primary-text-emphasis: rgb(255, 193, 7);
+//   --bs-border-width: 0px;
+//   --bs-border-radius: 0.7rem;
+//   --bs-primary: #e8e8e8;
+// }
 
 body {
   // background-image: url(./img/bg.svg);
@@ -14,21 +14,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #202023;
-}
-
-.accordion {
-  --bs-accordion-active-bg: white;
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0;
-}
-
-.accordion-button {
-  padding: 0;
-}
-.accordion-button:not(.collapsed) {
-  color: rgb(255, 193, 7);
-}
-.accordion-body {
-  padding: 0;
 }
 
 .bg1 {
@@ -79,6 +64,19 @@ body {
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   --bs-card-bg: "rgba(0,0,0,0)";
   justify-content: space-evenly;
+}
+
+.card2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  background-color: white;
 }
 
 .content {
@@ -144,16 +142,20 @@ body::before {
   --bs-btn-disabled-bg: #ca6b6b;
   --bs-btn-disabled-border-color: #0d6efd;
 }
-.custom-button {
-  border-radius: 0; /* Radio de las esquinas por defecto para todos los botones */
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+
+.modal{
+  --bs-modal-footer-border-width: 0px;
+
+}
+.modal-content{
+  --bs-border-style: none;
+
 }
 
 .receso-text {
-  background-image: url('./img/bgLinea.png'); 
-  background-repeat: repeat;
-  background-size: auto; /* Ajusta el tamaño de fondo según tus preferencias */
+  background-color: #5c5c5c;
+  border-radius: "1rem";
   color: white; /* Oculta el texto original */
   text-align: center; /* Centra el texto en el contenedor */
-  }
+}
+
