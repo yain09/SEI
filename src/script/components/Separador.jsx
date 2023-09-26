@@ -6,10 +6,10 @@ function Separador() {
       <Col></Col>
       <Col>
         <h1
-          className="text-white text-center m-0"
-          style={{ backgroundColor: "#202023"}}
+          className="text-center m-0"
+          style={{ color: "#202023"}}
         >
-          Receso
+          RECESO INVERNAL
         </h1>
       </Col>
       <Col></Col>

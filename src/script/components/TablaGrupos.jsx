@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
+import { MDBCard } from "mdb-react-ui-kit";
 import { useMediaQuery } from "react-responsive";
 
 async function fetchData() {
@@ -20,9 +21,9 @@ async function fetchData() {
     const docentesDataMap = {};
 
     tabla.forEach((fila) => {
-      const docente = fila.c[8].v;
-      const grupo = fila.c[11].v;
-      const alumno = fila.c[5].v;
+      const docente = fila.c[9].v;
+      const grupo = fila.c[12].v;
+      const alumno = fila.c[6].v;
 
       if (!docentesDataMap[docente]) {
         docentesDataMap[docente] = {};
@@ -43,6 +44,14 @@ async function fetchData() {
 }
 
 function TablaGrupos() {
+  const coloresDocentes = {
+    "ARMELLINI, Griselda": "rgb(144, 238, 144)", // Color para Docente 1
+    "COZZI, Gabriela": "rgb(35, 206, 250)", // Color para Docente 2
+    "FEIGIELSON, Sofia": "rgb(255, 250, 205)", // Color para Docente 2
+    "HERRERO, Valeria": "rgb(105, 105, 105)", // Color para Docente 2
+    "ORSI, Rocío": "rgb(244, 164, 96)",
+    "PUIG, Sebastián": "rgb(220, 20, 60)",
+  };
   const isMdScreen = useMediaQuery({ maxWidth: 1200, minWidth: 768 });
   const isXsScreen = useMediaQuery({ maxWidth: 576 });
   const cardStyle = isXsScreen
@@ -74,10 +83,11 @@ function TablaGrupos() {
           {Object.keys(docentesData).map((docente) => (
             <div
               key={docente}
-              className="text-white"
+              className="text-white pt-4"
               style={{ textAlign: "center" }}
             >
-              <h2> {docente}</h2>
+              <span className="text-little">docente</span>
+              <span className="h2"> {docente}</span>
               <Row>
                 {Object.keys(docentesData[docente]).map((grupo) => (
                   <Col
@@ -87,34 +97,62 @@ function TablaGrupos() {
                     className="justify-content-center"
                   >
                     {" "}
-                    <Card
-                      style={cardStyle}
-                      className="align-item-center card2 my-2 mx-0"
+                    <MDBCard
+                      style={{
+                        ...cardStyle,
+                        backgroundColor: "transparent",
+                        borderWidth: "2px",
+                        borderColor: coloresDocentes[docente], // Establecer el color de fondo
+                      }}
+                      className="align-item-center my-2 mx-0"
                       key={grupo}
                     >
                       <Row className="w-100 d-flex align-item-center justify-content-center">
                         <Col
                           xs={3}
-                          style={{ alignItems: "center", fontSize: "3rem" }}
-                          className="d-flex p-0 m-0 justify-content-center"
+                          style={{ alignItems: "center" }}
+                          className="flex-column p-0 m-0 justify-content-center"
                         >
-                          {grupo}
+                          <p
+                            style={{ color: "rgb(130,130,130)" }}
+                            className="text-little mb-0 pt-1"
+                          >
+                            Grupo
+                          </p>
+                          <p
+                            className="mb-0 pb-1"
+                            style={{
+                              alignItems: "center",
+                              fontSize: "3rem",
+                              color: coloresDocentes[docente],
+                            }}
+                          >
+                            {grupo}
+                          </p>
                         </Col>
-                        <Col xs={9}>
+                        <Col xs={8} className="p-0">
                           {docentesData[docente][grupo].map((alumno) => (
                             <p
                               key={alumno}
-                              className="m-0 p-0 text-capitalize align-text-left text-dark"
+                              className="m-0 p-0 text-capitalize align-text-left text-light"
                             >
-                              {alumno.toLowerCase()}
+                              {alumno}
                             </p>
                           ))}
                         </Col>
                       </Row>
-                    </Card>
+                    </MDBCard>
                   </Col>
                 ))}
               </Row>
+              <hr
+                style={{
+                  border: `2px solid ${coloresDocentes[docente]}`,
+                  width: "100%",
+                  margin: "0 auto",
+                }}
+                className="mt-4"
+              />
             </div>
           ))}
         </div>

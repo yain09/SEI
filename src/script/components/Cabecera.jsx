@@ -1,31 +1,28 @@
-import {
-  Row,
-  Navbar,
-  Container,
-  Col,
-  Image,
-  ButtonGroup,
-  Dropdown,
-  DropdownButton,
-  Button,
-} from "react-bootstrap";
+import { Row, Navbar, Container, Col, Image, Button } from "react-bootstrap";
+import { useState } from "react";
 import logo from "../../img/largo.svg";
 import logo2 from "../../img/corto.svg";
 import logo3 from "../../img/logo.svg";
 import se1 from "../../img/se1largo.svg";
 import se2 from "../../img/se1corto.svg";
 import { useMediaQuery } from "react-responsive";
+import { BsCalendar3 } from "react-icons/bs";
+import { FaUsers } from "react-icons/fa";
 
 function Cabecera({ setCurrentState }) {
   const isLgScreen = useMediaQuery({ minWidth: 1200 });
   const isMdScreen = useMediaQuery({ maxWidth: 1200, minWidth: 768 });
   const isSmScreen = useMediaQuery({ maxWidth: 768 });
-
+  const [X, setX] = useState(1);
   const handleButtonClick1 = () => {
     setCurrentState("cronograma");
+    setX(1);
+    console.log(X);
   };
   const handleButtonClick2 = () => {
-    setCurrentState("docente 1");
+    setCurrentState("docente");
+    setX(2);
+    console.log(X);
   };
 
   return (
@@ -35,7 +32,7 @@ function Cabecera({ setCurrentState }) {
           <Col className="d-flex justify-content-center">
             <Image
               src={isLgScreen ? logo : isMdScreen ? logo2 : logo3}
-              alignItems="center"
+             
               height={"50px"}
               className=" align-center"
             />
@@ -47,27 +44,29 @@ function Cabecera({ setCurrentState }) {
             className="d-flex justify-content-center h4 m-0"
             style={{ color: "rgb(130,130,130)" }}
           >
-            <p>{setCurrentState()}</p>
-            <DropdownButton
-              as={ButtonGroup}
-              align={"end"}
-              title=""
-              id="bg-nested-dropdown"
-              variant="outline-light"
-            >
-              <Dropdown.Item eventKey="1" onClick={handleButtonClick1}>
-                Cronograma
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="2" onClick={handleButtonClick2}>
-                Docentes
-              </Dropdown.Item>
-            </DropdownButton>
-            {/* <Button variant="outline-light" onClick={handleButtonClick}>
-              Cronograma
-            </Button>
-            <Button variant="outline-light" onClick={handleButtonClick}>
-              Docentes
-            </Button> */}
+            {X === 2 ? (
+              { isMdScreen } ? (
+                <BsCalendar3
+                  onClick={handleButtonClick1}
+                  color="white"
+                  size="2.5rem"
+                />
+              ) : (
+                <Button variant="outline-light" onClick={handleButtonClick1}>
+                  "cronograma"
+                </Button>
+              )
+            ) : { isMdScreen } ? (
+              <FaUsers
+                onClick={handleButtonClick2}
+                color="white"
+                size="2.5rem"
+              />
+            ) : (
+              <Button variant="outline-light" onClick={handleButtonClick2}>
+                docentes
+              </Button>
+            )}
           </Col>
         </Row>
       </Container>

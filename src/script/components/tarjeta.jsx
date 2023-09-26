@@ -151,7 +151,7 @@ function Tarjeta(props) {
   return (
     <Col className="d-flex justify-content-center">
       <Card
-        className="align-self-center card my-4 px-1 pb-0"
+        className="card2 align-self-center card my-4 px-1 pb-0"
         onClick={handleOpenModal}
         style={styleTeoria}
       >

@@ -20,20 +20,12 @@ function App() {
           </>
         );
       }
-      case "docente 1": {
+      case "docente": {
         return (
           <>
             <TablaGrupos />
           </>
         );
-      }
-
-      case "docente 2": {
-        return <></>;
-      }
-
-      case "docente 3": {
-        return <></>;
       }
       default: {
         setCurrentState("cronograma");
@@ -44,7 +36,7 @@ function App() {
     <>
       <Cabecera setCurrentState={setCurrentState} className="mb-3" />
       <Container className="" id="Body">
-      {RenderContent()}
+        {RenderContent()}
       </Container>
     </>
   );
