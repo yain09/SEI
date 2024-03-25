@@ -55,10 +55,10 @@ function TablaGrupos() {
   const isMdScreen = useMediaQuery({ maxWidth: 1200, minWidth: 768 });
   const isXsScreen = useMediaQuery({ maxWidth: 576 });
   const cardStyle = isXsScreen
-    ? { minWidth: "350px", maxHeight: "120px" }
+    ? { minWidth: "350px", maxHeight: "150px" }
     : isMdScreen
-    ? { minWidth: "320px", maxHeight: "120px" }
-    : { minWidth: "400px", maxHeight: "120px" };
+    ? { minWidth: "320px", maxHeight: "150px" }
+    : { minWidth: "400px", maxHeight: "150px" };
   const [docentesData, setDocentesData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
