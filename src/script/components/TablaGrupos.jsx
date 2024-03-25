@@ -44,11 +44,11 @@ async function fetchData() {
 }
 
 function TablaGrupos() {
-  const coloresDocentes = {
-    "ARMELLINI, Griselda": "rgb(144, 238, 144)", // Color para Docente 1
-    "COZZI, Gabriela": "rgb(35, 206, 250)", // Color para Docente 2
-    "GODOY, Yaín": "rgb(255, 250, 205)", // Color para Docente 2
-    "HERRERO, Valeria": "rgb(105, 105, 105)", // Color para Docente 2
+  const coloresDocentes = {  // Color para Docente
+    "ARMELLINI, Griselda": "rgb(144, 238, 144)", //Docente 1
+    "COZZI, Gabriela": "rgb(35, 206, 250)", // Docente 2
+    "GODOY, Yaín": "rgb(255, 250, 205)", //  Docente 3
+    "HERRERO, Valeria": "rgb(105, 105, 105)", // Docente 4
     "ORSI, Rocío": "rgb(244, 164, 96)",
     "PUIG, Sebastián": "rgb(220, 20, 60)",
   };
