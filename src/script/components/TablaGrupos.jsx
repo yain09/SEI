@@ -45,7 +45,7 @@ async function fetchData() {
 
 function TablaGrupos() {
   const coloresDocentes = {  // Color para Docente
-    "ARMELLINI, Griselda": "rgb(144, 238, 144)", //Docente 1
+    "ARMELINI, Griselda": "rgb(144, 238, 144)", //Docente 1
     "COZZI, Gabriela": "rgb(35, 206, 250)", // Docente 2
     "GODOY, Yaín": "rgb(196, 174, 51)", //  Docente 3
     "HERRERO, Valeria": "rgb(105, 105, 105)", // Docente 4
