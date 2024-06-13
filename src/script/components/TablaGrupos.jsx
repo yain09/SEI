@@ -44,7 +44,8 @@ async function fetchData() {
 }
 
 function TablaGrupos() {
-  const coloresDocentes = {  // Color para Docente
+  const coloresDocentes = {
+    // Color para Docente
     "ARMELINI, Griselda": "rgb(144, 238, 144)", //Docente 1
     "COZZI, Gabriela": "rgb(35, 206, 250)", // Docente 2
     "GODOY, Yaín": "rgb(196, 174, 51)", //  Docente 3
@@ -80,81 +81,95 @@ function TablaGrupos() {
         <div className="loading-spinner"></div>
       ) : (
         <div>
-          {Object.keys(docentesData).map((docente) => (
-            <div
-              key={docente}
-              className="text-white pt-4"
-              style={{ textAlign: "center" }}
-            >
-              <span className="text-little">docente</span>
-              <span className="h2"> {docente}</span>
-              <Row>
-                {Object.keys(docentesData[docente]).map((grupo) => (
-                  <Col
-                    xs={12}
-                    md={6}
-                    style={{ display: "flex" }}
-                    className="justify-content-center"
-                  >
-                    {" "}
-                    <MDBCard
-                      style={{
-                        ...cardStyle,
-                        backgroundColor: "transparent",
-                        borderWidth: "2px",
-                        borderColor: coloresDocentes[docente], // Establecer el color de borde
-                      }}
-                      className="align-item-center my-2 mx-0"
-                      key={grupo}
-                    >
-                      <Row className="w-100 d-flex align-item-center justify-content-center">
-                        <Col
-                          xs={3}
-                          style={{ alignItems: "center" }}
-                          className="flex-column p-0 m-0 justify-content-center"
+          {Object.keys(docentesData)
+            .filter((docente) => docente !== "Sin Agrupamiento")
+            .map((docente) => (
+              <div
+                key={docente}
+                className="text-white pt-4"
+                style={{ textAlign: "center" }}
+              >
+                <span className="text-little">docente</span>
+                <span className="h2"> {docente}</span>
+                <Row>
+                  {Object.keys(docentesData[docente]).map((grupo) => {
+                    const isSinAgrupamiento = docente === "Sin Agrupamiento";
+                    const grupoStyle = isSinAgrupamiento
+                      ? { display: "none" }
+                      : { display: "flex" };
+
+                    return (
+                      <Col
+                        xs={12}
+                        md={6}
+                        style={{ display: "flex" }}
+                        className="justify-content-center"
+                        key={grupo}
+                      >
+                        <MDBCard
+                          style={{
+                            ...cardStyle,
+                            backgroundColor: "transparent",
+                            borderWidth: "2px",
+                            borderColor: coloresDocentes[docente], // Establecer el color de borde
+                          }}
+                          className="align-item-center my-2 mx-0"
                         >
-                          <p
-                            style={{ color: "rgb(130,130,130)" }}
-                            className="text-little mb-0 pt-1"
+                          <Row
+                            className="w-100 d-flex align-item-center justify-content-center"
+                            style={grupoStyle}
                           >
-                            Grupo
-                          </p>
-                          <p
-                            className="mb-0 pb-1"
-                            style={{
-                              alignItems: "center",
-                              fontSize: "3rem",
-                              color: coloresDocentes[docente],
-                            }}
-                          >
-                            {grupo}
-                          </p>
-                        </Col>
-                        <Col xs={8} className="p-0">
-                          {docentesData[docente][grupo].map((alumno) => (
-                            <p
-                              key={alumno}
-                              className="m-0 p-0 text-capitalize align-text-left text-light"
+                            <Col
+                              xs={3}
+                              style={{ alignItems: "center" }}
+                              className="flex-column p-0 m-0 justify-content-center"
                             >
-                              {alumno}
-                            </p>
-                          ))}
-                        </Col>
-                      </Row>
-                    </MDBCard>
-                  </Col>
-                ))}
-              </Row>
-              <hr
-                style={{
-                  border: `2px solid ${coloresDocentes[docente]}`,
-                  width: "100%",
-                  margin: "0 auto",
-                }}
-                className="mt-4"
-              />
-            </div>
-          ))}
+                              <p
+                                style={{ color: "rgb(130,130,130)" }}
+                                className="text-little mb-0 pt-1"
+                              >
+                                Grupo
+                              </p>
+                              <p
+                                className="mb-0 pb-1"
+                                style={{
+                                  alignItems: "center",
+                                  fontSize: "3rem",
+                                  color: coloresDocentes[docente],
+                                }}
+                              >
+                                {grupo}
+                              </p>
+                            </Col>
+                            <Col xs={8} className="p-0">
+                              {docentesData[docente][grupo].map((alumno) => (
+                                <p
+                                  key={alumno}
+                                  className="m-0 p-0 text-capitalize align-text-left text-light"
+                                  style={
+                                    isSinAgrupamiento ? { display: "none" } : {}
+                                  }
+                                >
+                                  {alumno}
+                                </p>
+                              ))}
+                            </Col>
+                          </Row>
+                        </MDBCard>
+                      </Col>
+                    );
+                  })}
+                </Row>
+                <hr
+                  style={{
+                    border: `2px solid ${coloresDocentes[docente]}`,
+                    width: "100%",
+                    margin: "0 auto",
+                  }}
+                  className="mt-4"
+                />
+              </div>
+            ))}
         </div>
       )}
     </>
